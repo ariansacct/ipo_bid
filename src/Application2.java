@@ -26,21 +26,40 @@ public class Application2 {
         int totalAvailable = totalShares;
         // we need to get the highest highest price; ie, the first row in the map
 
-        for (double nextHighPrice : reverseSortedMap.keySet()) {
-            List<Bid> l = reverseSortedMap.get(nextHighPrice);
-            for (Bid nextBidInTime : l) {
-                int sharesRequested = nextBidInTime.numShares;
-                if (sharesRequested <= totalAvailable) {
+//        for (double nextHighPrice : reverseSortedMap.keySet()) {
+//            List<Bid> l = reverseSortedMap.get(nextHighPrice);
+//            for (Bid nextBidInTime : l) {
+//                int sharesRequested = nextBidInTime.numShares;
+//                if (sharesRequested <= totalAvailable) {
+//
+//                }
+//            }
+//        }
 
-                }
-            }
-        }
-
+        Map<Double, Integer> countMap = new HashMap<>();
         for (Bid bid : bids) {
-
+            double bidPrice = bid.bidPrice;
+            countMap.put(bidPrice, countMap.getOrDefault(bidPrice, 0) + 1);
         }
 
         List<Integer> result = new ArrayList<>();
+
+        
+
         return result;
+    }
+
+    public static void main(String[] args) {
+        // Bid(int uid, int numShares, double bidPrice, int timestamp)
+        Bid b1 = new Bid(1, 100, 500, 1);
+        Bid b2 = new Bid(2, 90, 500, 2);
+        Bid b3 = new Bid(5, 120, 500, 3);
+        Bid b4 = new Bid(4, 10, 450, 1);
+        Bid b5 = new Bid(3, 15, 450, 3);
+
+        List<Bid> bids = Arrays.asList(b1, b4, b2, b3, b5);
+        Application2 application2 = new Application2();
+        List<Integer> kir = application2.getUnallocatedUsers(bids, 1000);
+        System.out.println("siktir");
     }
 }
