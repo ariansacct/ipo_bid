@@ -13,4 +13,14 @@ public class Bid {
         this.bidPrice = bidPrice;
         this.timestamp = timestamp;
     }
+
+    @Override
+    public String toString() {
+        return "Bid{" +
+                "uid=" + uid +
+                ", numShares=" + numShares +
+                ", bidPrice=" + bidPrice +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }
